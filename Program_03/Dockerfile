@@ -1,21 +1,13 @@
-
-# Use Node.js version 22 with Alpine Linux
-FROM node:22-alpine
-
-# Set the working directory 
+# Use official Python image
+FROM python
+# Set working directory
 WORKDIR /app
-
-# Copy package.json and package-lock.json 
-COPY package*.json ./
-
-# Install the  dependencies
-RUN npm install
-
-# Copy the application file 
-COPY app.js .
-
-# Expose port 3000 for the application
-EXPOSE 3000
-
-# Start 
-CMD ["node", "app.js"]
+# Copy requirement file and install dependencies
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+# Copy application code
+COPY . .
+# Expose port 5000
+EXPOSE 5000
+# Run the app
+CMD ["python", "app.py"]
