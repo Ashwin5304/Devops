@@ -1,0 +1,18 @@
+1. mkdir P03 
+2. cd P03 
+3. nano Dockerfile 
+4. nano app.js 
+ # Build the image 
+5. sudo docker build -t node-app .
+  # run this command 
+6. sudo docker run -d -p 3000:3000 --name node-container node-app 
+7. sudo docker ps       #check if container is there and running 
+8. docker logs node-container 
+# server running on 3000 
+
+docker stop node-container 
+docker rm node-container 
+
+docker rmi node-app 
+
+rm -r P03 
