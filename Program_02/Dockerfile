@@ -1,36 +1,38 @@
-### Start the Multi-Stage Dockerfile - 1 & 2
-### (Build & Production Stage)
+# A multi stage Dockerfile
 
 # Stage 1: Build Stage
-FROM node:20-alpine AS builder
+From node:20-alpine AS builder
 
-# Set working directory
+# Set the Working Directory
 WORKDIR /app
 
-# Copy package files and install dependencies
-COPY package.json package-lock.json ./
+# Copy packages
+COPY package*.json ./
+
+# Install the dependencies
 RUN npm install
 
 # Copy application source code
 COPY . .
 
-# Build the application
-RUN npm run build
 
 # Stage 2: Production Stage
-FROM node:20-alpine
+FROM node:20-alpine as production
 
 # Set working directory
 WORKDIR /app
 
-# Copy only necessary files from build stage
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/package-lock.json ./
-COPY --from=builder /app/dist ./dist
+# Copy the package files
+COPY --from=builder /app/package*.json ./
+
+# Copy the installed dependencies
 COPY --from=builder /app/node_modules ./node_modules
+
+# Copy the app source code
+COPY --from=builder /app/src ./src
 
 # Expose the application port
 EXPOSE 3000
 
 # Start the application
-CMD ["node", "dist/index.js"]
+CMD ["node", "src/index.js"]
