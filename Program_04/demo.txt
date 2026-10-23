@@ -1,0 +1,30 @@
+Add all files 
+
+  Build the docker image 
+  sudo docker build -t git-hub 
+
+
+  terminal change cd 
+
+  git init 
+  git config --global user.name "Ashwin5304"
+  git config --global  user.email "ashwin.aithal16@gmail.com"
+
+  git add . 
+  git commit -m "initial commit" 
+
+  git remote add origin https://github.com/Ashwin5304/lab3.git
+git branch -M main 
+  git push -u origin main 
+
+
+  Run docker 
+  sudo docker run -d -p 5000:5000 --name p04 git-hub 
+
+
+    updated '
+
+    git status 
+    git add app.py 
+    git commit -m "UpdATED " 
+    git push 
