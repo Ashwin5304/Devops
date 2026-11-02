@@ -1,0 +1,31 @@
+mkdir P06 
+cd P06 
+
+nano Dockerfile 
+npm init -y 
+npm install express 
+
+sudo docker build -t p06 .
+
+sudo docker tag p06 ashwinaithalg/prgm6
+
+sudo docker login -u ashwinaithalg
+
+sudo docker push ashwinaithalg/prgm6
+sudo docker tag p06 ghcr.io/ashwin5304/prgm6 
+
+echo "YOUR_NEW_GITHUB_PAT" | sudo docker login ghcr.io -u Ashwin5304 --password-stdin
+
+sudo docker push ghcr.io/ashwin5304/prgm6:latest
+
+
+git init 
+git add . 
+git config --global user.name / email 
+
+git commit -m " " 
+git branch -M main 
+
+git remote add origin https://github.com/Ashwin5304/repo_name.git 
+
+git push -u origin main 
