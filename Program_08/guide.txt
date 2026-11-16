@@ -1,0 +1,24 @@
+mkdir Program-8
+cd Program-8
+
+minikubes start 
+minikubes status 
+
+nano server.js
+nano nodejs-configmap.yaml
+nano nodejs-pod.yaml
+
+
+kubectl apply -f nodejs-configmap.yaml
+kubectl apply -f nodejs-pod.yaml
+
+kubectl get deployments 
+kubectl get replicasets 
+kubectl get pods 
+
+
+kubectl port-forward pod/nodejs-pod 3000:3000
+
+kubectl delete pods --all 
+kubectl delete svc --all
+kubectl delete deployment --all 
