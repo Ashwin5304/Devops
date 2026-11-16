@@ -1,0 +1,40 @@
+mkdir P007
+cd P007 
+
+minikube start 
+minikube status 
+
+
+nano nginx-deployment.yaml
+nano nginx-service.yaml
+
+kubectl get deployments
+kubectl get replicasets
+kubectl get pods
+
+kubectl apply -f nginx-deployment.yaml 
+kubectl apply -f nginx-service.yaml 
+
+
+kubectl get deployments 
+kubectl get replicasets
+kubectl get pods 
+
+kubectl expose deployment nginx-deployment \
+--type=NodePort -\
+-port=80
+
+kubectl get services
+
+minikube service nginx-deployment 
+
+
+#To delete 
+
+kubectl delete pods --all 
+kubectl delete svc --all 
+kubectl delete deployments --all 
+
+
+
+
