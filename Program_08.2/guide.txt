@@ -27,7 +27,7 @@ kubectl exec -it python-pod -- python     #THIS OPENS PYTHON SHELL & INSIDE SHEL
 print("HELLO")
  exit() 
 
-kubectl exec -it python-pod -- python -c "print('Hello Students!')"
+kubectl exec -it python-pod -- python -c "print('Hello Students')"
 
 kubectl exec -it python-pod -- python -c "a=10; b=20; print('Sum =', a+b)"
 
