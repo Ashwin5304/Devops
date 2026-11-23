@@ -1,0 +1,22 @@
+                                                           python-pod.yaml                                                                     
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: python-pod
+  name: python-pod
+spec:
+  containers:
+  - command:
+    - python
+    - -u
+    - -c
+    - import time; print('Welcome to Kubernetes'); print('Python Pod is running');
+      time.sleep(3600)
+    image: python:3.12-slim
+    name: python-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+
